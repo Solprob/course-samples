@@ -18,3 +18,7 @@ class SampleStudent(models.Model):
         required=False)
     height = fields.Float(
         required=False)
+    is_external = fields.Boolean(
+        string='Is external?',
+        default=False,
+        required=False)

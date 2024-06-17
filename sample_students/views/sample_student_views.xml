@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sample_student_action" model="ir.actions.act_window">
+            <field name="name">Listado de Estudiantes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sample.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="sample_student_view_form" model="ir.ui.view">
+            <field name="name">sample_student_view_form</field>
+            <field name="model">sample.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Sample Student">
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="birthday" />
+                                <field name="weight" />
+                                <field name="is_external" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="sex" />
+                                <field name="age" />
+                                <field name="height" />
+                            </group>
+                        </group>
+                        <group>
+                            <separator/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sample_student_view_tree" model="ir.ui.view">
+            <field name="name">sample_student_view_tree</field>
+            <field name="model">sample.student</field>
+            <field name="arch" type="xml">
+                <tree string="Estudiantes">
+                    <field name="name"/>
+                    <field name="sex"/>
+                    <field name="age"/>
+                    <field name="is_external"/>
+                </tree>
+            </field>
+        </record>
+
+        <menuitem id="sample_students_menu_root" name="Estudiantes"  sequence="20"/>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="sample_students_menu_item"
+                  name="Estudiantes"
+                  parent="sample_students_menu_root"
+                  action="sample_student_action"
+                  sequence="10"/>
+
+    </data>
+</odoo>
