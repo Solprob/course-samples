@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="subject_student_form_view" model="ir.ui.view">
+            <field name="name">Asignaturas x Estudiantes</field>
+            <field name="model">subject.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="Subject">
+                        <group string="Materia y estudiante">
+                            <group>
+                                <field name="subject_generic_id" on_change="1" />
+                                <field name="teacher_id"  />
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="student_id"  />
+                                <field name="final_note" widget="percent_pie" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="evaluation_type_ids" widget="many2many_tags" />
+                        </group>
+                        <group>
+                            <field name="evaluation_ids" on_change="1" >
+                                <tree string="Evaluation" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="grade"/>
+                                    <field name="evaluation_type_id"/>
+                                    <field name="note" widget="priority"/>
+                                    <field name="test_file" widget="pdf_viewer" class="pdf_viewer"/>
+                                    <field name="teacher_sign" widget="signature"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="subject_student_tree_view" model="ir.ui.view">
+            <field name="name">Asignaturas x Estudiantes</field>
+            <field name="model">subject.student</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name"/>
+                    <field name="teacher_id"/>
+                    <field name="final_note" widget="percent_pie"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="subject_student_act_window" model="ir.actions.act_window">
+            <field name="name">Asignaturas x Estudiantes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subject.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Subject.
+                </p>
+            </field>
+        </record>
+
+        <record id="evaluation_list_action" model="ir.actions.act_window">
+            <field name="name">Lista de Evaluaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subject.evaluation</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="subject_generic_action_window" model="ir.actions.act_window">
+            <field name="name">Lista de Materias</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subject.generic</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="evaluation_type_action_window" model="ir.actions.act_window">
+            <field name="name">Tipos de Evaluacion</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">evaluation.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="subject_student_menu"
+                  name="Asignaturas x Estudiantes"
+                  parent="sample_students_menu_root"
+                  action="subject_student_act_window"
+                  sequence="10"/>
+
+        <menuitem id="evaluation_menu_item"
+                  name="Evaluaciones"
+                  parent="sample_students_menu_root"
+                  action="evaluation_list_action"
+                  sequence="20"/>
+
+        <menuitem id="student_settings_menu"
+                  name="Configuraciones"
+                  parent="sample_students_menu_root"
+                  sequence="30"/>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_setting_subject_generic"
+                  name="Nombre de Asignaturas"
+                  parent="student_settings_menu"
+                  action="subject_generic_action_window"
+                  sequence="10"/>
+
+        <menuitem id="menu_setting_evaluation_type"
+                  name="Tipos de Evaluacion"
+                  parent="student_settings_menu"
+                  action="evaluation_type_action_window"
+                  sequence="20"/>
+
+    </data>
+</odoo>

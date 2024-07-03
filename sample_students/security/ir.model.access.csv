@@ -1,6 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 uid_basic_sample_student,access_sample_student,model_sample_student,,1,1,1,1
 uid_basic_student_class_room,access_student_class_room,model_student_class_room,,1,1,1,1
-uid_basic_student_subject,access_subject,model_subject,,1,1,1,1
-uid_basic_evaluation,access_evaluation,model_evaluation,,1,1,1,1
+uid_basic_subject_generic,access_subject_generic,model_subject_generic,,1,1,1,1
+uid_basic_subject_student,access_subject_student,model_subject_student,,1,1,1,1
+uid_basic_subject_evaluation,access_subject_evaluation,model_subject_evaluation,,1,1,1,1
 uid_basic_evaluation_type,access_evaluation_type,model_evaluation_type,,1,1,1,1

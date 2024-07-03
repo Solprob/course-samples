@@ -11,6 +11,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/sample_student_views.xml',
+        'views/student_class.xml',
+        'data/data.xml',
     ],
     'installable': True,
     'auto_install': False

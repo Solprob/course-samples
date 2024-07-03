@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="class_01" model="student.class.room">
+            <field name="name">Clase Numero 1</field>
+        </record>
+
+        <!-- FOr Subject -->
+        <record id="subject_math" model="subject.generic">
+            <field name="name">Maths</field>
+        </record>
+        <record id="subject_spanish" model="subject.generic">
+            <field name="name">Spanish</field>
+        </record>
+        <record id="subject_history" model="subject.generic">
+            <field name="name">History</field>
+        </record>
+
+        <!-- FOr Evaluation types -->
+        <record id="evaluation_oral" model="evaluation.type">
+            <field name="name">Oral</field>
+        </record>
+        <record id="evaluation_written" model="evaluation.type">
+            <field name="name">Written</field>
+        </record>
+        <record id="evaluation_homework" model="evaluation.type">
+            <field name="name">Homework</field>
+        </record>
+
+    </data>
+</odoo>

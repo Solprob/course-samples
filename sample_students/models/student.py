@@ -8,6 +8,7 @@ class SampleStudent(models.Model):
     _description = 'Sample Student'
 
     name = fields.Char()
+    picture = fields.Binary(string="")
     sex = fields.Selection(
         string='Sex',
         selection=[('fem', 'fem'),
@@ -24,7 +25,7 @@ class SampleStudent(models.Model):
         required=False)
     father_id = fields.Many2one('res.partner', string='Father')
     mother_id = fields.Many2one('res.partner', string='Mother')
-    subject_ids = fields.One2many('subject', 'student_id', string='Subjects')
+    subject_ids = fields.One2many('subject.student', 'student_id', string='Subjects')
     room_id = fields.Many2one('student.class.room', string='Classroom')
 
     age = fields.Integer(string="Age", compute="_compute_age", store=True)
