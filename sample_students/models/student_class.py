@@ -61,7 +61,11 @@ class Evaluation(models.Model):
         "evaluation.type",
         help="Evaluation types",
     )
-    grade = fields.Integer(string="Grade", required=True)
+    date_evaluation = fields.Date(
+        string='Date',
+        default= fields.Date.today,
+        required=False)
+    grade = fields.Integer(string="Grade", required=True, default=8)
     note = fields.Selection(
         string="Note",
         selection=[
@@ -74,6 +78,12 @@ class Evaluation(models.Model):
         ],
         required=False,
     )
+    note_int = fields.Integer(string="Note as Integer", compute='_compute_note_int',store=True)
+
+    @api.depends('note')
+    def _compute_note_int(self):
+        for record in self:
+            record.note_int = int(record.note) if record.note else 0
 
     test_file = fields.Binary("PDF TEST")
     teacher_sign = fields.Binary()

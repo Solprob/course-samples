@@ -41,7 +41,7 @@
                                         <tree editable="bottom">
                                             <field name="name"/>
                                             <field name="teacher_id"/>
-                                            <field name="final_note" widget="percent_pie"/>
+                                            <field name="final_note" widget="percentpie"/>
                                         </tree>
                                     </field>
                                 </group>
